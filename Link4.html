@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Umfrage - Bild 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #003366; /* Dunkelblau */
+            color: white; /* Weißer Text für besseren Kontrast */
+        }
+        #image {
+            width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Schau dir das Bild genau an!</h2>
+    <img id="image" src="https://raw.githubusercontent.com/lerrick57/deepfake-umfrage/main/Bild4.jpg" alt="Bild 4">
+
+    <div id="timer">
+        <p>Verbleibende Zeit: <span id="time">10</span> Sekunden</p>
+    </div>
+
+    <div id="message">
+        <p>Die Zeit ist abgelaufen! Der Tab wird in Kürze geschlossen.</p>
+    </div>
+
+    <script>
+        // Startzeit in Sekunden
+        let timeLeft = 10;
+
+        // Funktion zur Aktualisierung des Timers
+        function updateTimer() {
+            document.getElementById('time').textContent = timeLeft;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                // Wenn die Zeit abgelaufen ist, zeige die Nachricht an
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('timer').style.display = 'none';  // Verstecke den Timer
+
+                // Warte 3 Sekunden und versuche, den Tab zu schließen
+                setTimeout(() => {
+                    window.close();  // Funktioniert nur, wenn der Tab durch JavaScript geöffnet wurde
+                }, 3000);
+            } else {
+                // Timer alle 1000ms (1 Sekunde) aktualisieren
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Timer starten
+        updateTimer();
+
+        // Bild anzeigen
+        document.getElementById('image').style.display = 'block';
+    </script>
+</body>
+</html>
