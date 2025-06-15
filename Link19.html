@@ -9,14 +9,14 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
-            background-color: #003366; /* Dunkelblau */
+            background-color: #003366; 
             color: white;
         }
         #image {
             width: 500px;
             display: block;
             margin: 0 auto;
-            transition: opacity 1s ease-in-out; /* Weiche Animation beim Ausblenden */
+            transition: opacity 1s ease-in-out; 
         }
         #message {
             display: none;
@@ -53,12 +53,12 @@
             timeLeft--;
 
             if (timeLeft < 0) {
-                // Bild ausblenden
+               
                 document.getElementById('image').style.opacity = "0";
                 setTimeout(() => {
-                    document.getElementById('image').style.display = "none"; // Komplett ausblenden
+                    document.getElementById('image').style.display = "none"; 
                     document.getElementById('message').style.display = 'block';
-                }, 1000); // Kleiner Delay für die Animation
+                }, 1000); 
             } else {
                 setTimeout(updateTimer, 1000);
             }
